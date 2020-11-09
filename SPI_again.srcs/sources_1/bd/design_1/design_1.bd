@@ -1,0 +1,259 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x37532E616863D549",
+      "device": "xc7a35ticsg324-1L",
+      "name": "design_1",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2020.1",
+      "validated": "true"
+    },
+    "design_tree": {
+      "Synchronizer_0": "",
+      "Splitter_0": "",
+      "SPISlave_0": ""
+    },
+    "ports": {
+      "SPI_clock_0": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "CLK_DOMAIN": {
+            "value": "design_1_SPI_clock_0",
+            "value_src": "default"
+          },
+          "FREQ_HZ": {
+            "value": "100000000",
+            "value_src": "default"
+          },
+          "FREQ_TOLERANCE_HZ": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "PHASE": {
+            "value": "0.000",
+            "value_src": "default"
+          }
+        }
+      },
+      "reset_0": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_LOW",
+            "value_src": "default"
+          }
+        }
+      },
+      "io_SPISignals_MOSI_0": {
+        "direction": "I"
+      },
+      "io_SPISignals_SS_0": {
+        "direction": "I"
+      },
+      "io_currentByte_0": {
+        "direction": "O",
+        "left": "7",
+        "right": "0"
+      },
+      "io_isCurrentlyReading_0": {
+        "direction": "O"
+      },
+      "in1_0": {
+        "direction": "I"
+      }
+    },
+    "components": {
+      "Synchronizer_0": {
+        "vlnv": "xilinx.com:module_ref:Synchronizer:1.0",
+        "xci_name": "design_1_Synchronizer_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Synchronizer",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "SPI_clock": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "CLK_DOMAIN": {
+                "value": "design_1_SPI_clock_0",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "clock": {
+            "type": "clk",
+            "direction": "I"
+          },
+          "SPI_clock_synced": {
+            "direction": "O"
+          }
+        }
+      },
+      "Splitter_0": {
+        "vlnv": "xilinx.com:module_ref:Splitter:1.0",
+        "xci_name": "design_1_Splitter_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Splitter",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "in1": {
+            "direction": "I"
+          },
+          "out1": {
+            "direction": "O",
+            "parameters": {
+              "CLK_DOMAIN": {
+                "value": "",
+                "value_src": "weak"
+              },
+              "FREQ_HZ": {
+                "value": "",
+                "value_src": "weak"
+              },
+              "PHASE": {
+                "value": "",
+                "value_src": "weak"
+              }
+            }
+          },
+          "out2": {
+            "direction": "O",
+            "parameters": {
+              "CLK_DOMAIN": {
+                "value": "",
+                "value_src": "weak"
+              },
+              "FREQ_HZ": {
+                "value": "",
+                "value_src": "weak"
+              },
+              "PHASE": {
+                "value": "",
+                "value_src": "weak"
+              }
+            }
+          }
+        }
+      },
+      "SPISlave_0": {
+        "vlnv": "xilinx.com:module_ref:SPISlave:1.0",
+        "xci_name": "design_1_SPISlave_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "SPISlave",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clock": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "io_SPISignals_SCLK": {
+            "direction": "I"
+          },
+          "io_SPISignals_MOSI": {
+            "direction": "I"
+          },
+          "io_SPISignals_SS": {
+            "direction": "I"
+          },
+          "io_currentByte": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "io_isCurrentlyReading": {
+            "direction": "O"
+          }
+        }
+      }
+    },
+    "nets": {
+      "SPI_clock_0_1": {
+        "ports": [
+          "SPI_clock_0",
+          "Synchronizer_0/SPI_clock"
+        ]
+      },
+      "Synchronizer_0_SPI_clock_synced": {
+        "ports": [
+          "Synchronizer_0/SPI_clock_synced",
+          "SPISlave_0/io_SPISignals_SCLK"
+        ]
+      },
+      "reset_0_1": {
+        "ports": [
+          "reset_0",
+          "SPISlave_0/reset"
+        ]
+      },
+      "io_SPISignals_MOSI_0_1": {
+        "ports": [
+          "io_SPISignals_MOSI_0",
+          "SPISlave_0/io_SPISignals_MOSI"
+        ]
+      },
+      "io_SPISignals_SS_0_1": {
+        "ports": [
+          "io_SPISignals_SS_0",
+          "SPISlave_0/io_SPISignals_SS"
+        ]
+      },
+      "SPISlave_0_io_currentByte": {
+        "ports": [
+          "SPISlave_0/io_currentByte",
+          "io_currentByte_0"
+        ]
+      },
+      "SPISlave_0_io_isCurrentlyReading": {
+        "ports": [
+          "SPISlave_0/io_isCurrentlyReading",
+          "io_isCurrentlyReading_0"
+        ]
+      },
+      "Splitter_0_out2": {
+        "ports": [
+          "Splitter_0/out2",
+          "Synchronizer_0/clock"
+        ]
+      },
+      "Splitter_0_out1": {
+        "ports": [
+          "Splitter_0/out1",
+          "SPISlave_0/clock"
+        ]
+      },
+      "in1_0_1": {
+        "ports": [
+          "in1_0",
+          "Splitter_0/in1"
+        ]
+      }
+    }
+  }
+}
