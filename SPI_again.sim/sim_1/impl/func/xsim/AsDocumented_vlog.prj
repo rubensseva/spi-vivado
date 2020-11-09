@@ -1,7 +1,0 @@
-# compile verilog/system verilog design source files
-verilog xil_defaultlib  \
-"AsDocumented_func_impl.v" \
-"../../../../../../Code/NTNU/Datamaskinprosjekt/SPI/testbenches/SPI/SPISlave/SPISlaveAsDocumentedTest.v" \
-
-# Do not sort compile order
-nosort
