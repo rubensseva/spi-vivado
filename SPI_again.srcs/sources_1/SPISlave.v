@@ -141,7 +141,7 @@ initial begin
         #`RANDOMIZE_DELAY begin end
       `else
         #0.002 begin end
-      endif
+      `endif
     `endif
 `ifdef RANDOMIZE_REG_INIT
   _RAND_0 = {1{`RANDOM}};
@@ -254,4 +254,4 @@ module SPISlave(
   assign shiftRegister_reset = reset;
   assign shiftRegister_io_in = _T & _GEN_1; // @[SPISlave.scala 23:23 SPISlave.scala 33:27]
   assign shiftRegister_io_enable = _T & _GEN_0; // @[SPISlave.scala 22:27 SPISlave.scala 32:31]
-endmodule`
+endmodule
